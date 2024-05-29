@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TDVLesson06.Models.TDVSong>
+
+@{
+    ViewBag.Title = "TDV: Danh sach bai hat";
+}
+
+<h2>TDV: Danh sach bai hat</h2>
+
+<p>
+    @Html.ActionLink("Create New", "TDVCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVAuthor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVArtist)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVYearRelease)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVAuthor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVArtist)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVYearRelease)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
