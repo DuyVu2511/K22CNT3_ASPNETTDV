@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TDVK22CNT3Lesson09DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TDVKhoa">
+    <Key>
+      <PropertyRef Name="TDVMaKH" />
+    </Key>
+    <Property Name="TDVMaKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TDVTenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TDVSinhViens" Relationship="Self.FK_TDVSinhVien_TDVKhoa" FromRole="TDVKhoa" ToRole="TDVSinhVien" />
+  </EntityType>
+  <EntityType Name="TDVMonHoc">
+    <Key>
+      <PropertyRef Name="TDVMaMH" />
+    </Key>
+    <Property Name="TDVMaMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TDVTenMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TDVSotiet" Type="Int32" />
+    <NavigationProperty Name="TDVKetquas" Relationship="Self.FK_TDVKetqua_TDVMonHoc" FromRole="TDVMonHoc" ToRole="TDVKetqua" />
+  </EntityType>
+  <EntityType Name="TDVSinhVien">
+    <Key>
+      <PropertyRef Name="TDVMaSV" />
+    </Key>
+    <Property Name="TDVMaSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TDVHoSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TDVTenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TDVPhai" Type="Boolean" />
+    <Property Name="TDVNgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="TDVNoiSinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TDVMaKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TDVHocBong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TDVDiemTrungBinh" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="TDVKhoa" Relationship="Self.FK_TDVSinhVien_TDVKhoa" FromRole="TDVSinhVien" ToRole="TDVKhoa" />
+    <NavigationProperty Name="TDVKetquas" Relationship="Self.FK_TDVKetqua_TDVSinhVien" FromRole="TDVSinhVien" ToRole="TDVKetqua" />
+  </EntityType>
+  <EntityType Name="TDVKetqua">
+    <Key>
+      <PropertyRef Name="TDVMaSV" />
+      <PropertyRef Name="TDVMaMH" />
+    </Key>
+    <Property Name="TDVMaSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TDVMaMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Diem" Type="Int32" />
+    <NavigationProperty Name="TDVMonHoc" Relationship="Self.FK_TDVKetqua_TDVMonHoc" FromRole="TDVKetqua" ToRole="TDVMonHoc" />
+    <NavigationProperty Name="TDVSinhVien" Relationship="Self.FK_TDVKetqua_TDVSinhVien" FromRole="TDVKetqua" ToRole="TDVSinhVien" />
+  </EntityType>
+  <Association Name="FK_TDVSinhVien_TDVKhoa">
+    <End Role="TDVKhoa" Type="Self.TDVKhoa" Multiplicity="0..1" />
+    <End Role="TDVSinhVien" Type="Self.TDVSinhVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TDVKhoa">
+        <PropertyRef Name="TDVMaKH" />
+      </Principal>
+      <Dependent Role="TDVSinhVien">
+        <PropertyRef Name="TDVMaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TDVKetqua_TDVMonHoc">
+    <End Role="TDVMonHoc" Type="Self.TDVMonHoc" Multiplicity="1" />
+    <End Role="TDVKetqua" Type="Self.TDVKetqua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TDVMonHoc">
+        <PropertyRef Name="TDVMaMH" />
+      </Principal>
+      <Dependent Role="TDVKetqua">
+        <PropertyRef Name="TDVMaMH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TDVKetqua_TDVSinhVien">
+    <End Role="TDVSinhVien" Type="Self.TDVSinhVien" Multiplicity="1" />
+    <End Role="TDVKetqua" Type="Self.TDVKetqua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TDVSinhVien">
+        <PropertyRef Name="TDVMaSV" />
+      </Principal>
+      <Dependent Role="TDVKetqua">
+        <PropertyRef Name="TDVMaSV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TDVK22CNT3Lesson09DbEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TDVKhoas" EntityType="Self.TDVKhoa" />
+    <EntitySet Name="TDVMonHocs" EntityType="Self.TDVMonHoc" />
+    <EntitySet Name="TDVSinhViens" EntityType="Self.TDVSinhVien" />
+    <EntitySet Name="TDVKetquas" EntityType="Self.TDVKetqua" />
+    <AssociationSet Name="FK_TDVSinhVien_TDVKhoa" Association="Self.FK_TDVSinhVien_TDVKhoa">
+      <End Role="TDVKhoa" EntitySet="TDVKhoas" />
+      <End Role="TDVSinhVien" EntitySet="TDVSinhViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TDVKetqua_TDVMonHoc" Association="Self.FK_TDVKetqua_TDVMonHoc">
+      <End Role="TDVMonHoc" EntitySet="TDVMonHocs" />
+      <End Role="TDVKetqua" EntitySet="TDVKetquas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TDVKetqua_TDVSinhVien" Association="Self.FK_TDVKetqua_TDVSinhVien">
+      <End Role="TDVSinhVien" EntitySet="TDVSinhViens" />
+      <End Role="TDVKetqua" EntitySet="TDVKetquas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

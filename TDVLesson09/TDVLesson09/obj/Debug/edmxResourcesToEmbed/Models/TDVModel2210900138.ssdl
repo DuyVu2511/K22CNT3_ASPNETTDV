@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TDVK22CNT3Lesson09DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TDVK22CNT3Lesson09Db.dbo.TDVKetqua' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TDVKetqua">
+    <Key>
+      <PropertyRef Name="TDVMaSV" />
+      <PropertyRef Name="TDVMaMH" />
+    </Key>
+    <Property Name="TDVMaSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TDVMaMH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Diem" Type="int" />
+  </EntityType>
+  <EntityType Name="TDVKhoa">
+    <Key>
+      <PropertyRef Name="TDVMaKH" />
+    </Key>
+    <Property Name="TDVMaKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TDVTenKH" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TDVMonHoc">
+    <Key>
+      <PropertyRef Name="TDVMaMH" />
+    </Key>
+    <Property Name="TDVMaMH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TDVTenMH" Type="nvarchar" MaxLength="50" />
+    <Property Name="TDVSotiet" Type="int" />
+  </EntityType>
+  <EntityType Name="TDVSinhVien">
+    <Key>
+      <PropertyRef Name="TDVMaSV" />
+    </Key>
+    <Property Name="TDVMaSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TDVHoSV" Type="nvarchar" MaxLength="50" />
+    <Property Name="TDVTenSV" Type="nvarchar" MaxLength="50" />
+    <Property Name="TDVPhai" Type="bit" />
+    <Property Name="TDVNgaySinh" Type="date" />
+    <Property Name="TDVNoiSinh" Type="nvarchar" MaxLength="50" />
+    <Property Name="TDVMaKH" Type="nvarchar" MaxLength="50" />
+    <Property Name="TDVHocBong" Type="nvarchar" MaxLength="50" />
+    <Property Name="TDVDiemTrungBinh" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <Association Name="FK_TDVKetqua_TDVMonHoc">
+    <End Role="TDVMonHoc" Type="Self.TDVMonHoc" Multiplicity="1" />
+    <End Role="TDVKetqua" Type="Self.TDVKetqua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TDVMonHoc">
+        <PropertyRef Name="TDVMaMH" />
+      </Principal>
+      <Dependent Role="TDVKetqua">
+        <PropertyRef Name="TDVMaMH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TDVKetqua_TDVSinhVien">
+    <End Role="TDVSinhVien" Type="Self.TDVSinhVien" Multiplicity="1" />
+    <End Role="TDVKetqua" Type="Self.TDVKetqua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TDVSinhVien">
+        <PropertyRef Name="TDVMaSV" />
+      </Principal>
+      <Dependent Role="TDVKetqua">
+        <PropertyRef Name="TDVMaSV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TDVSinhVien_TDVKhoa">
+    <End Role="TDVKhoa" Type="Self.TDVKhoa" Multiplicity="0..1" />
+    <End Role="TDVSinhVien" Type="Self.TDVSinhVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TDVKhoa">
+        <PropertyRef Name="TDVMaKH" />
+      </Principal>
+      <Dependent Role="TDVSinhVien">
+        <PropertyRef Name="TDVMaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TDVK22CNT3Lesson09DbModelStoreContainer">
+    <EntitySet Name="TDVKhoa" EntityType="Self.TDVKhoa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TDVMonHoc" EntityType="Self.TDVMonHoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TDVSinhVien" EntityType="Self.TDVSinhVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TDVKetqua" EntityType="Self.TDVKetqua" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TDVKetqua].[TDVMaSV] AS [TDVMaSV], 
+    [TDVKetqua].[TDVMaMH] AS [TDVMaMH], 
+    [TDVKetqua].[Diem] AS [Diem]
+    FROM [dbo].[TDVKetqua] AS [TDVKetqua]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_TDVKetqua_TDVMonHoc" Association="Self.FK_TDVKetqua_TDVMonHoc">
+      <End Role="TDVMonHoc" EntitySet="TDVMonHoc" />
+      <End Role="TDVKetqua" EntitySet="TDVKetqua" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TDVKetqua_TDVSinhVien" Association="Self.FK_TDVKetqua_TDVSinhVien">
+      <End Role="TDVSinhVien" EntitySet="TDVSinhVien" />
+      <End Role="TDVKetqua" EntitySet="TDVKetqua" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TDVSinhVien_TDVKhoa" Association="Self.FK_TDVSinhVien_TDVKhoa">
+      <End Role="TDVKhoa" EntitySet="TDVKhoa" />
+      <End Role="TDVSinhVien" EntitySet="TDVSinhVien" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

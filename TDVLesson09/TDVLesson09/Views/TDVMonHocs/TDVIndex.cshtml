@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TDVLesson09.Models.TDVMonHoc>
+
+@{
+    ViewBag.Title = "TDVIndex";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("TDVCreate New", "TDVCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVTenMH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVSotiet)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVTenMH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVSotiet)
+        </td>
+        <td>
+            @Html.ActionLink("TDVEdit", "TDVEdit", new { id=item.TDVMaMH }) |
+            @Html.ActionLink("TDVDetails", "TDVDetails", new { id=item.TDVMaMH }) |
+            @Html.ActionLink("TDVDelete", "TDVDelete", new { id=item.TDVMaMH })
+        </td>
+    </tr>
+}
+
+</table>

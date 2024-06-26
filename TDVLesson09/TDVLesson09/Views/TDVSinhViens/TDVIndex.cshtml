@@ -1,0 +1,75 @@
+﻿@model IEnumerable<TDVLesson09.Models.TDVSinhVien>
+
+@{
+    ViewBag.Title = "TDVIndex";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("TDVCreate New", "TDVCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVHoSV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVTenSV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVPhai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVNgaySinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVNoiSinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVHocBong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVDiemTrungBinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVKhoa.TDVTenKH)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVHoSV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVTenSV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVPhai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVNgaySinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVNoiSinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVHocBong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVDiemTrungBinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVKhoa.TDVMaKH)
+        </td>
+        <td>
+            @Html.ActionLink("TDVEdit", "TDVEdit", new { id=item.TDVMaSV }) |
+            @Html.ActionLink("TDVDetails", "TDVDetails", new { id=item.TDVMaSV }) |
+            @Html.ActionLink("TDVDelete", "TDVDelete", new { id=item.TDVMaSV })
+        </td>
+    </tr>
+}
+
+</table>

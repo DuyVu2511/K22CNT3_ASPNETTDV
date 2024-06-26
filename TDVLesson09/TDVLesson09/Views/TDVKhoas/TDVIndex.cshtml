@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TDVLesson09.Models.TDVKhoa>
+
+@{
+    ViewBag.Title = "TDVIndex";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("TDVCreate New", "TDVCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVMaKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVTenKH)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVMaKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVTenKH)
+        </td>
+        <td>
+            @Html.ActionLink("TDVEdit", "TDVEdit", new { id=item.TDVMaKH }) |
+            @Html.ActionLink("TDVDetails", "TDVDetails", new { id=item.TDVMaKH }) |
+            @Html.ActionLink("TDVDelete", "TDVDelete", new { id=item.TDVMaKH })
+        </td>
+    </tr>
+}
+
+</table>

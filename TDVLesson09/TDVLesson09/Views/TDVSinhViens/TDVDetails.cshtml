@@ -1,0 +1,82 @@
+﻿@model TDVLesson09.Models.TDVSinhVien
+
+@{
+    ViewBag.Title = "TDVDetails";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TDVSinhVien</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVHoSV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVHoSV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVTenSV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVTenSV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVPhai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVPhai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVNgaySinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVNgaySinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVNoiSinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVNoiSinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVHocBong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVHocBong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVDiemTrungBinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVDiemTrungBinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVKhoa.TDVTenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVKhoa.TDVTenKH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("TDVEdit", "TDVEdit", new { id = Model.TDVMaSV }) |
+    @Html.ActionLink("Back to List", "TDVIndex")
+</p>
