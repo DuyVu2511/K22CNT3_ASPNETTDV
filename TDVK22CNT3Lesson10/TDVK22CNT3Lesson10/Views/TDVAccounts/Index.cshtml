@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TDVK22CNT3Lesson10.Models.TDVAccount>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_TDVLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVFullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVFullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TDVId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TDVId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TDVId })
+        </td>
+    </tr>
+}
+
+</table>

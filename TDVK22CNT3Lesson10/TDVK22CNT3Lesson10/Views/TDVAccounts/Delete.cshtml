@@ -1,0 +1,65 @@
+﻿@model TDVK22CNT3Lesson10.Models.TDVAccount
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_TDVLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TDVAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVFullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVFullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVActive)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

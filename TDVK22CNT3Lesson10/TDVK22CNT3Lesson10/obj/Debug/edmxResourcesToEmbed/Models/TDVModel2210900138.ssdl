@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TDVK22CNT3Lesson10Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TDVAccount">
+    <Key>
+      <PropertyRef Name="TDVId" />
+    </Key>
+    <Property Name="TDVId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TDVUserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TDVPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="TDVFullName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TDVEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="TDVActive" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="TDVK22CNT3Lesson10ModelStoreContainer">
+    <EntitySet Name="TDVAccount" EntityType="Self.TDVAccount" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
