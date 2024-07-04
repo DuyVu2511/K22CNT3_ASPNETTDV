@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TDVK22CNT3Lesson11_2210900138.Models.TDVCategory>
+
+@{
+    ViewBag.Title = "Danh muc san pham";
+    Layout = "~/Views/Shared/_TDV2210900138Layout.cshtml";
+}
+
+<h2>Danh muc san pham</h2>
+
+<p>
+    @*Html.ActionLink("Create New", "Create")*@
+</p>
+<a href="/TDVCategories/Create" class="btn btn-primary my-3">Them moi</a>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVCateName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVStatus)
+        </th>
+        <th>Chuc nang</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVCateName)
+        </td>
+        <td>
+            @*Html.DisplayFor(modelItem => item.TDVStatus)*@
+
+            @if (item.TDVStatus == true)
+            {
+                <span style="color:green">Hoat dong</span>
+            }
+            else
+            {
+                <span style="color:red">Khong hoat dong</span>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TDVId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TDVId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TDVId })
+        </td>
+    </tr>
+}
+
+</table>

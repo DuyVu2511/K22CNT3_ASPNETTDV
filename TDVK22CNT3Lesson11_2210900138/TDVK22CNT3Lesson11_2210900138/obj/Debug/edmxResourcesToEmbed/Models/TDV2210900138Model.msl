@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TDVK22CNT3Lesson11DbModelStoreContainer" CdmEntityContainer="TDVK22CNT3Lesson11DbEntities">
+    <EntitySetMapping Name="TDVCategories">
+      <EntityTypeMapping TypeName="TDVK22CNT3Lesson11DbModel.TDVCategory">
+        <MappingFragment StoreEntitySet="TDVCategory">
+          <ScalarProperty Name="TDVId" ColumnName="TDVId" />
+          <ScalarProperty Name="TDVCateName" ColumnName="TDVCateName" />
+          <ScalarProperty Name="TDVStatus" ColumnName="TDVStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TDVProducts">
+      <EntityTypeMapping TypeName="TDVK22CNT3Lesson11DbModel.TDVProduct">
+        <MappingFragment StoreEntitySet="TDVProduct">
+          <ScalarProperty Name="TDVId2210900138" ColumnName="TDVId2210900138" />
+          <ScalarProperty Name="TDVProName" ColumnName="TDVProName" />
+          <ScalarProperty Name="TDVQty" ColumnName="TDVQty" />
+          <ScalarProperty Name="TDVPrice" ColumnName="TDVPrice" />
+          <ScalarProperty Name="TDVCateId" ColumnName="TDVCateId" />
+          <ScalarProperty Name="TDVActive" ColumnName="TDVActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

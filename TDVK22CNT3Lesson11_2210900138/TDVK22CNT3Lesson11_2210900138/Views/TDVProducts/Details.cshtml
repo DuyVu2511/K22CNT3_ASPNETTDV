@@ -1,0 +1,59 @@
+﻿@model TDVK22CNT3Lesson11_2210900138.Models.TDVProduct
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_TDV2210900138Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TDVProduct</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVProName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVProName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVCategory.TDVCateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVCategory.TDVCateName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TDVId2210900138 }) |
+    @Html.ActionLink("Back to List", "TDVIndex")
+</p>

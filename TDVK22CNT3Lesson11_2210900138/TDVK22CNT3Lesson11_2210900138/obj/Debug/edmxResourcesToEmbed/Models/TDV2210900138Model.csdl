@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TDVK22CNT3Lesson11DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TDVCategory">
+    <Key>
+      <PropertyRef Name="TDVId" />
+    </Key>
+    <Property Name="TDVId" Type="Int32" Nullable="false" />
+    <Property Name="TDVCateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TDVStatus" Type="Boolean" />
+    <NavigationProperty Name="TDVProducts" Relationship="Self.FK_TDVProduct_TDVCategory" FromRole="TDVCategory" ToRole="TDVProduct" />
+  </EntityType>
+  <EntityType Name="TDVProduct">
+    <Key>
+      <PropertyRef Name="TDVId2210900138" />
+    </Key>
+    <Property Name="TDVId2210900138" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TDVProName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TDVQty" Type="Int32" />
+    <Property Name="TDVPrice" Type="Double" />
+    <Property Name="TDVCateId" Type="Int32" />
+    <Property Name="TDVActive" Type="Boolean" />
+    <NavigationProperty Name="TDVCategory" Relationship="Self.FK_TDVProduct_TDVCategory" FromRole="TDVProduct" ToRole="TDVCategory" />
+  </EntityType>
+  <Association Name="FK_TDVProduct_TDVCategory">
+    <End Role="TDVCategory" Type="Self.TDVCategory" Multiplicity="0..1" />
+    <End Role="TDVProduct" Type="Self.TDVProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TDVCategory">
+        <PropertyRef Name="TDVId" />
+      </Principal>
+      <Dependent Role="TDVProduct">
+        <PropertyRef Name="TDVCateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TDVK22CNT3Lesson11DbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TDVCategories" EntityType="Self.TDVCategory" />
+    <EntitySet Name="TDVProducts" EntityType="Self.TDVProduct" />
+    <AssociationSet Name="FK_TDVProduct_TDVCategory" Association="Self.FK_TDVProduct_TDVCategory">
+      <End Role="TDVCategory" EntitySet="TDVCategories" />
+      <End Role="TDVProduct" EntitySet="TDVProducts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

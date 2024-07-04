@@ -1,0 +1,65 @@
+﻿@model TDVK22CNT3Lesson11_2210900138.Models.TDVProduct
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_TDV2210900138Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TDVProduct</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVProName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVProName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDVCategory.TDVCateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDVCategory.TDVCateName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "TDVIndex")
+        </div>
+    }
+</div>

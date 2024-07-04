@@ -1,0 +1,72 @@
+﻿@model IEnumerable<TDVK22CNT3Lesson11_2210900138.Models.TDVProduct>
+
+@{
+    ViewBag.Title = "Danh sach san pham";
+    Layout = "~/Views/Shared/_TDV2210900138Layout.cshtml";
+}
+
+<h2>Danh sach san pham</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVId2210900138)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVProName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TDVCategory.TDVCateName)
+        </th>
+        <th>Chuc nang</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVId2210900138)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVProName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVPrice)
+        </td>
+        <td>
+            @*Html.DisplayFor(modelItem => item.TDVActive)*@
+            @if (item.TDVActive == true)
+            {
+                <span style="color:green">Hoat dong</span>
+            }
+            else
+            {
+                <span style="color:red">Khong hoat dong</span>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDVCategory.TDVCateName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TDVId2210900138 }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TDVId2210900138 }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TDVId2210900138 })
+        </td>
+    </tr>
+}
+
+</table>
